@@ -1,6 +1,7 @@
 package com.skk.BlogApi.posts;
 
 
+import com.skk.BlogApi.entity.Post;
 import com.skk.BlogApi.entity.User;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

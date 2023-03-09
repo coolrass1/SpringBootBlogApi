@@ -1,4 +1,4 @@
-package com.skk.BlogApi.posts;
+package com.skk.BlogApi.entity;
 
 import com.skk.BlogApi.entity.User;
 import jakarta.persistence.*;
@@ -7,12 +7,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Post {
+public class Post  implements Serializable {
 
     @Id
     @SequenceGenerator(
