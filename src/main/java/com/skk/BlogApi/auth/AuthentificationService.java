@@ -66,6 +66,9 @@ private JwtService jwtService;
 
     }
 
+    User findOneuser(Long i){
+        return  userRepository.getById(i);
+    }
 
 
 

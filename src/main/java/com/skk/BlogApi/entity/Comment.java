@@ -27,14 +27,14 @@ public class Comment implements Serializable {
     )
     private Long Id;
     private String content;
-    /*@ManyToOne(
+    @ManyToOne(
             cascade = CascadeType.MERGE
     )
     @JoinColumn(
             name = "Author",
             referencedColumnName = "Id"
     )
-    private User user;*/
+    private User user;
     @ManyToOne(
             cascade = CascadeType.MERGE
     )
