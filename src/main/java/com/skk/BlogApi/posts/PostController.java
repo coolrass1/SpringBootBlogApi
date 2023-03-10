@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
@@ -16,10 +18,31 @@ import java.util.List;
 public class PostController {
 @Autowired
     PostService postservice;
+PostresponseDTO postresponseDTO;
+
 
     @GetMapping("/post")
-    public List<Post> hello(){
-        return postservice.all();
+    public List<PostresponseDTO> hello(){
+        var thiep =postservice.all();
+
+        List<PostresponseDTO> listpostdto= new ArrayList<>();
+
+
+
+        thiep.stream().map(e->{
+            listpostdto
+                    .add(PostresponseDTO.builder()
+                            .title(e.getTitle())
+                            .Author(e.getUser()
+                                    .getName())
+                            .AthorId(e.getUser()
+                                    .getId())
+                            .message(e.getContent())
+                            .build());
+            return e;
+        }).collect(Collectors.toList());
+        System.out.println(listpostdto);
+        return listpostdto;
     }
     @PostMapping("/post")
     Post createPost(@RequestBody PostDTO newPost) {
