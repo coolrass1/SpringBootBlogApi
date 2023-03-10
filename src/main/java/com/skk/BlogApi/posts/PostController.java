@@ -23,13 +23,13 @@ PostresponseDTO postresponseDTO;
 
     @GetMapping("/post")
     public List<PostresponseDTO> hello(){
-        var thiep =postservice.all();
+        //var thiep =postservice.all();
 
         List<PostresponseDTO> listpostdto= new ArrayList<>();
 
 
 
-        thiep.stream().map(e->{
+        postservice.all().stream().map(e->
             listpostdto
                     .add(PostresponseDTO.builder()
                             .title(e.getTitle())
@@ -38,10 +38,10 @@ PostresponseDTO postresponseDTO;
                             .AthorId(e.getUser()
                                     .getId())
                             .message(e.getContent())
-                            .build());
-            return e;
-        }).collect(Collectors.toList());
-        System.out.println(listpostdto);
+                            .build())
+
+        ).collect(Collectors.toList());
+
         return listpostdto;
     }
     @PostMapping("/post")
