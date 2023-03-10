@@ -8,6 +8,7 @@ import com.skk.BlogApi.entity.UserRepository;
 import com.skk.BlogApi.posts.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,11 @@ private UserRepository userRepository;
     @GetMapping("/comment")
     List<Comment> GetAllComment(){
         return commentService.all();
+    }
+
+    @GetMapping("/comment/page")
+    Page<Comment> GetAllCommenPage(){
+        return commentService.getPageableComment(1,2);
     }
 
     @PostMapping("/comment")
